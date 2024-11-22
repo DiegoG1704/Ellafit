@@ -26,7 +26,7 @@ const Index: React.FC = () => {
             type="password"
           />
         </div>
-        <Button className="ingresar" onClick={()=>navigate('/produccion')}>
+        <Button className="ingresar" onClick={()=>navigate('/Produccion')}>
           Ingresar
         </Button>
       </div>

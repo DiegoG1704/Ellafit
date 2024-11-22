@@ -1,10 +1,8 @@
-/* src/css/Sidebar.css */
-
 .sidebar {
     position: fixed;
     top: 0; /* Ajusta según el tamaño de tu navbar */
-    left: 0;
-    width: 200px;
+    left: -30px;
+    width: 250px;
     height: 100%;
     background-color: #4F9CD7;
     color:white;
@@ -14,6 +12,12 @@
     overflow: hidden;
     z-index: 100; /* Asegúrate de que el sidebar esté por encima del contenido */
     text-align: center;
+    justify-content: center;
+    border-radius: 40px;
+  }
+
+  .linea{
+    background: white;
   }
   .sidebar__logo-icon{
     color: #85C226; 
@@ -23,9 +27,26 @@
   }
   
   .sidebar img{
-    width: 80%;
+    width: 170px;
     border-radius: 50%;
     margin-left: 10%;
+  }
+  .usuarioSidebar{
+    display: flex;
+    justify-content: center;
+    width: 200px;
+    background-color: rgba(159, 204, 243, 0.863);
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 5px;
+    margin: 15px;
+    border-radius: 20px;
+  }
+
+  .usuarioSidebar img{
+    width: 50px;
+    border-radius: 50px;
   }
   
   .sidebar.closed {
@@ -40,46 +61,27 @@
   }
   
   .sidebar-menu li {
-    padding: 15px;
     cursor: pointer;
     display: flex;
     align-items: center;
-    margin-top: 10px;
+    margin: 10px;
+    justify-content: center;
+    height: 50px;
+
   }
   
-  .sidebar-menu li a {
-    color: white;
-    text-decoration: none; /* Elimina el subrayado */
-    display: flex;
-    align-items: center;
+  .sidebar-menu li span {
+    margin-right: 5px;
   }
 
   
   .sidebar-menu li:hover {
     background-color: #BACD00;
-    width: 70%;
-    border-radius: 10px;
+    border-radius: 40px;
   }
   
   .sidebar-menu li:hover a {
     color: white; /* Mantiene el color del texto en hover */
-  }
-  
-  .toggle-button {
-    position: fixed;
-    top: 10px; /* Ajusta la posición vertical según sea necesario */
-    z-index: 200; /* Asegúrate de que el botón esté sobre el contenido */
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-radius: 50%;
-    border: 5px solid #4F9CD7;
-    width: 50px;
-    height: 50px;
-    color: #4F9CD7; /* Color del ícono */
-    transition: left 0.3s ease; /* Transición para ajustar la posición del botón */
   }
   .sidebar h3{
     margin-top: 0;

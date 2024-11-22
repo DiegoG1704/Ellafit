@@ -1,40 +1,58 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import logo from '../../img/logo.png'
-import { Button } from 'antd';
+import usuario from '../../img/Usuario.png'
 import './css/Sidebar.css'
-import { ArrowLeftOutlined,ArrowRightOutlined,AuditOutlined,LogoutOutlined} from '@ant-design/icons';
+import {
+  ShoppingCartOutlined ,
+  QuestionCircleOutlined,
+  SettingOutlined,
+  UserSwitchOutlined,
+  FundProjectionScreenOutlined,
+  ProductOutlined} from '@ant-design/icons';
+import { Divider } from 'antd';
 
 
 const Sidebar: React.FC = () => {
     const navigate = useNavigate()
-    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
+   
   return(
     <>
-    <div className={`sidebar ${isSidebarOpen ? 'open' : 'closed'}`}>
+    <div className='sidebar'>
         <img src={logo} alt='' />
+        <Divider className='linea'/>
         <ul className="sidebar-menu">
-          <li onClick={() => navigate('/')}>
-            <i style={{ fontSize: '20px' }} ><AuditOutlined /></i>
-            {isSidebarOpen && <span style={{ fontSize: '14px' }}>Produccion</span>}
+          <li onClick={() => navigate('/Produccion')}>
+            <i style={{ fontSize: '20px' }} ><FundProjectionScreenOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Produccion</span>
+          </li>
+          <li onClick={() => navigate('/Productos')}>
+            <i style={{ fontSize: '20px' }} ><ProductOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Productos</span>
           </li>
           <li onClick={() => navigate('/')}>
-            <i style={{ fontSize: '20px' }}><LogoutOutlined /></i>
-            {isSidebarOpen && <span style={{ fontSize: '14px' }}>Cerrar Sesión</span>}
+            <i style={{ fontSize: '20px' }} ><ShoppingCartOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Ventas</span>
+          </li>
+          <li onClick={() => navigate('/')}>
+            <i style={{ fontSize: '20px' }} ><UserSwitchOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Roles</span>
+          </li>
+          <Divider className='linea'/>
+          <li onClick={() => navigate('/')}>
+            <i style={{ fontSize: '20px' }}><QuestionCircleOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Ayuda</span>
+          </li>
+          <li onClick={() => navigate('/')}>
+            <i style={{ fontSize: '20px' }}><SettingOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Ajustes</span>
           </li>
         </ul>
-        <Button
-        icon={isSidebarOpen? <ArrowLeftOutlined/> : <ArrowRightOutlined/>}
-        onClick={toggleSidebar}
-        className="toggle-button"
-        style={{
-          left: isSidebarOpen ? '180px' : '60px',
-          zIndex: 200,
-        }}
-        />
+        <div className='usuarioSidebar'>
+          <img src={usuario} />
+          <span>Anna Karin</span>
+          <span>Anna@gmail.com</span>
+        </div>
     </div>
     </>
   )
