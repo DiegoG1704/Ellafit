@@ -9,6 +9,8 @@ import {
   SettingOutlined,
   UserSwitchOutlined,
   FundProjectionScreenOutlined,
+  ShopOutlined,
+  PieChartOutlined ,
   ProductOutlined} from '@ant-design/icons';
 import { Divider } from 'antd';
 
@@ -30,9 +32,21 @@ const Sidebar: React.FC = () => {
             <i style={{ fontSize: '20px' }} ><ProductOutlined /></i>
             <span style={{ fontSize: '14px' }}>Productos</span>
           </li>
+          <li onClick={() => navigate('/ProductosRegistrados')}>
+            <i style={{ fontSize: '20px' }} ><UserSwitchOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Productos Registrados</span>
+          </li>
+          <li onClick={() => navigate('/')}>
+            <i style={{ fontSize: '20px' }} ><ShopOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Ventas</span>
+          </li>
           <li onClick={() => navigate('/')}>
             <i style={{ fontSize: '20px' }} ><ShoppingCartOutlined /></i>
-            <span style={{ fontSize: '14px' }}>Ventas</span>
+            <span style={{ fontSize: '14px' }}>PreVentas</span>
+          </li>
+          <li onClick={() => navigate('/')}>
+            <i style={{ fontSize: '20px' }} ><PieChartOutlined /></i>
+            <span style={{ fontSize: '14px' }}>Estadisticas</span>
           </li>
           <li onClick={() => navigate('/')}>
             <i style={{ fontSize: '20px' }} ><UserSwitchOutlined /></i>

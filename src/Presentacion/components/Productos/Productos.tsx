@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { BellOutlined, SearchOutlined, CloseOutlined, MenuOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
+import { BellOutlined, SearchOutlined, CloseOutlined, ExportOutlined, DeleteOutlined, ExclamationCircleOutlined } from '@ant-design/icons';
 import { Button, Card, Input, Table, Modal } from 'antd'; 
 import user from '../../img/Usuario.png';
 import '../css/produccion.css';
@@ -114,9 +114,9 @@ const Productos: React.FC = () => {
             key: 'Detalles',
             render: (text: string, record: any) => (
                 <Button 
-                    icon={<MenuOutlined />} 
+                    icon={<ExportOutlined style={{color:'#12C447',fontSize:'20px'}} />} 
                     onClick={() => { setSelectDt(record); setDetalles(true); }} 
-                    style={{ color: '#2452b5', borderColor: 'white' }} />
+                    style={{borderColor: 'white' }} />
             ),
         },
         {

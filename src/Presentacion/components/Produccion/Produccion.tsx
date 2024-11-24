@@ -1,12 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Sidebar from '../components/Sidebar';
-import { BellOutlined, SearchOutlined, CloseOutlined } from '@ant-design/icons';
-import { Card, Input, Table } from 'antd'; // Importar el componente Table de Ant Design
+import { BellOutlined, SearchOutlined, CloseOutlined,ExportOutlined } from '@ant-design/icons';
+import { Button, Card, Input, Table } from 'antd'; // Importar el componente Table de Ant Design
 import user from '../../img/Usuario.png';
 import '../css/produccion.css';
+import DialogDetal from './Dialog/DialogDetal';
 
 const Produccion: React.FC = () => {
-  // Datos de ejemplo para la tabla
+  const [open,setOpen] =useState(false)
+  const [selectDt,setSelectDt] =useState<any>(null)
+
+  const Estados = [
+    { id: 1, nombre: 'En Pausa' },
+    { id: 2, nombre: 'En Proceso' },
+    { id: 3, nombre: 'Finalizado' },
+    { id: 4, nombre: 'Por Iniciar' }
+];
   const dataSource = [
     {
       key: '1',
@@ -15,7 +24,7 @@ const Produccion: React.FC = () => {
       Color: 'Rojo',
       Stock: 150,
       Detalle: 'Producto en buen estado',
-      Estado: 'Disponible',
+      Estado:1,
     },
     {
       key: '2',
@@ -24,7 +33,7 @@ const Produccion: React.FC = () => {
       Color: 'Azul',
       Stock: 75,
       Detalle: 'Producto dañado',
-      Estado: 'No Disponible',
+      Estado:2,
     },
     {
       key: '3',
@@ -33,7 +42,7 @@ const Produccion: React.FC = () => {
       Color: 'Negro',
       Stock: 200,
       Detalle: 'Producto recién llegado',
-      Estado: 'Disponible',
+      Estado: 3,
     },
     {
       key: '4',
@@ -42,7 +51,7 @@ const Produccion: React.FC = () => {
       Color: 'Blanco',
       Stock: 50,
       Detalle: 'Producto en promoción',
-      Estado: 'Disponible',
+      Estado: 2,
     },
     {
       key: '5',
@@ -51,7 +60,7 @@ const Produccion: React.FC = () => {
       Color: 'Gris',
       Stock: 0,
       Detalle: 'Producto agotado',
-      Estado: 'No Disponible',
+      Estado: 4,
     },
   ];
 
@@ -81,11 +90,25 @@ const Produccion: React.FC = () => {
       title: 'Detalle',
       dataIndex: 'Detalle',
       key: 'Detalle',
+      render: (text: string, record: any) => (
+        <Button
+          icon={<ExportOutlined style={{color:'#12C447',fontSize:'20px'}}/>} 
+          onClick={() => { setSelectDt(record); setOpen(true); }} 
+          style={{borderColor: 'white' }} />
+      ),
     },
     {
       title: 'Estado',
       dataIndex: 'Estado',
       key: 'Estado',
+      render: (estadoId: number) => {
+        const estado = Estados.find((item) => item.id === estadoId);
+        return (
+            <span style={{ color: '#2659c7', background: '#a4bef5', borderRadius: '10px', padding: '5px' }}>
+                {estado ? estado.nombre : 'Estado no encontrado'}
+            </span>
+        );
+    },
     },
   ];
 
@@ -129,10 +152,8 @@ const Produccion: React.FC = () => {
             <Table columns={columns} dataSource={dataSource} pagination={false}/>
           </div>
         </div>
-
-        {/* Componente Table debajo del buscador */}
-        
       </div>
+      <DialogDetal Visible={open} Close={()=>setOpen(false)} Datos={selectDt}/>
     </div>
   );
 };
